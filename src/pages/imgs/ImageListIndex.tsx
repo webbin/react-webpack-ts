@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-09-08 16:22:23
- * @LastEditTime: 2021-01-28 21:05:03
+ * @LastEditTime: 2021-02-23 10:43:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /react-webpack-ts/src/pages/imgs/ImageListIndex.tsx
@@ -39,7 +39,7 @@ const renderImgIndex = () => <div>Img Index</div>;
 
 type Props = {
 	
-} & RouteComponentProps<>;
+};
 
 export default class ImageListIndex<Props> extends React.PureComponent {
 	goToMain = () => {
