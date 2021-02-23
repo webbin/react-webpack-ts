@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import echarts from 'echarts/lib/echarts';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 
+import { IStore } from '../../reducers/IStore';
 import './Temperature.css';
 
-class Temperature extends Component {
+type Props = {} & ReturnType<typeof mapState>;
+class Temperature extends Component<Props> {
   componentDidMount() {
     //
   }
@@ -39,12 +40,12 @@ class Temperature extends Component {
     }
 
     return (
-      <div className='temperature-text-container'>
-        <div className='temperature-text'>
-          <span className='temperature-text-span'>{data1}</span>
+      <div className="temperature-text-container">
+        <div className="temperature-text">
+          <span className="temperature-text-span">{data1}</span>
         </div>
-        <div className='temperature-text'>
-          <span className='temperature-text-span'>{data2}</span>
+        <div className="temperature-text">
+          <span className="temperature-text-span">{data2}</span>
         </div>
       </div>
     );
@@ -52,7 +53,7 @@ class Temperature extends Component {
 
   render() {
     return (
-      <div className='temperature-container'>
+      <div className="temperature-container">
         Temperature ECharts
         {this.renderShowTemperature()}
         <ReactEcharts option={this.getChartOption()} />
@@ -61,7 +62,7 @@ class Temperature extends Component {
   }
 }
 
-const mapState = (store) => {
+const mapState = (store: IStore) => {
   const { temperature } = store;
   return {
     temperature,

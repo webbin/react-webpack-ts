@@ -1,6 +1,6 @@
 /*
  * @Date: 2021-01-21 20:56:42
- * @LastEditTime: 2021-01-23 09:36:32
+ * @LastEditTime: 2021-02-23 14:51:01
  * @Author: zhengweibin
  */
 import React, { Component } from 'react';
@@ -8,6 +8,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import MockBrowser from './component/MockBrowser';
 import Root from './root/Root';
+import './App.css';
 
 export default class App extends Component {
   render(): JSX.Element {

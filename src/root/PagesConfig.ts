@@ -1,4 +1,6 @@
-const PagesConfig = [
+export type IConfig = { name: string; page: string };
+
+const PagesConfig: IConfig[] = [
   {
     name: 'Main',
     page: 'main-menu',

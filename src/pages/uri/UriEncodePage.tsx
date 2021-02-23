@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-export default class UriEncodePage extends Component {
-  constructor(props) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+type Props = RouteComponentProps<{}>;
+type States = { result: string };
+
+export default class UriEncodePage extends Component<Props, States> {
+  text = '';
+
+  constructor(props: Props) {
     super(props);
 
     this.text = '';
@@ -11,7 +18,7 @@ export default class UriEncodePage extends Component {
     };
   }
 
-  onTextChange = (event) => {
+  onTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     // console.log('on text change ', event.target.value);
     this.text = event.target.value;
   };

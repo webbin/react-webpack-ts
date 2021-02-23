@@ -1,6 +1,8 @@
 import { PUSH_TEMPERATURE } from '../constant/ActionTypes';
 
-export const pushTemperatureData = (data) => {
+import { ITemperatureData } from '../reducers/IStore'
+
+export const pushTemperatureData = (data: ITemperatureData) => {
   return {
     type: PUSH_TEMPERATURE,
     data,

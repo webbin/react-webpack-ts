@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import './Temperature.css';
 import { pushTemperatureData } from '../../actions/temperatureActions';
 
-class UploadTemperature extends Component {
-  constructor(props) {
+type Props = {
+  dispatch: Dispatch;
+} & ReturnType<typeof mapState>;
+
+class UploadTemperature extends Component<Props> {
+  text = '';
+
+  constructor(props: Props) {
     super(props);
 
     this.text = '';
@@ -26,7 +33,7 @@ class UploadTemperature extends Component {
     }
   };
 
-  onTextChange = (event) => {
+  onTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     // console.log('on text change ', event.nativeEvent.data);
     // console.log('on text change ', event.target.value);
     this.text = event.target.value;
@@ -34,12 +41,12 @@ class UploadTemperature extends Component {
 
   render() {
     return (
-      <div className='upload-temperature-container'>
+      <div className="upload-temperature-container">
         <textarea
-          className='upload-text-area'
+          className="upload-text-area"
           onChange={this.onTextChange}
         ></textarea>
-        <button id='temperature-upload' onClick={this.onPushTemperature}>
+        <button id="temperature-upload" onClick={this.onPushTemperature}>
           Upload
         </button>
       </div>

@@ -1,60 +1,69 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-// import './MockBrowser.css';
+import './MockBroswer.css';
 
-class MockBrowser extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			path: ''
-		};
-		this.onChange = this.onChange.bind(this);
-		this.onKeyPress = this.onKeyPress.bind(this);
-	}
+type Params = {};
 
-	componentDidMount() {
-		this.setState({ path: this.props.location.pathname })
-	}
+type Props = RouteComponentProps<Params>;
 
-	UNSAFE_componentWillReceiveProps(newProps) {
-		this.setState({ path: newProps.location.pathname })
-	}
+type States = { path: string };
+class MockBrowser extends React.Component<Props, States> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      path: '',
+    };
+  }
 
-	onChange(e) {
-		this.setState({ path: e.target.value });
-	}
+  componentDidMount() {
+    this.setState({ path: this.props.location.pathname });
+  }
 
-	onKeyPress(e) {
-		if (e.key === 'Enter') {
-			this.props.history.push(this.state.path)
-		}
-	}
+  UNSAFE_componentWillReceiveProps(newProps: Props) {
+    this.setState({ path: newProps.location.pathname });
+  }
 
-	render() {
-		const { goForward, goBack } = this.props.history;
-		const { location: { pathname } } = this.props;
+  onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ path: e.target.value });
+  };
 
-		return (
-			<div className="mock-browser">
-				<nav>
-					<button className="outline" onClick={goBack}>◀︎</button>{' '}
-					<button className="outline" onClick={goForward}>▶</button>
-				</nav>
-				<div className="path">
-					<div>http://webbin.cn</div>
-					<div>
-						<input
-							className="mock-browser-input"
-							value={this.state.path}
-							onChange={this.onChange}
-							onKeyPress={this.onKeyPress}
-						/>
-					</div>
-				</div>
-			</div>
-		)
-	}
+  onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      this.props.history.push(this.state.path);
+    }
+  };
+
+  render() {
+    const { goForward, goBack } = this.props.history;
+    const {
+      location: { pathname },
+    } = this.props;
+
+    return (
+      <div className="mock-browser">
+        <nav>
+          <button className="outline" onClick={goBack}>
+            ◀︎
+          </button>{' '}
+          <button className="outline" onClick={goForward}>
+            ▶
+          </button>
+        </nav>
+        <div className="path">
+          <div>http://webbin.cn</div>
+          <div>
+            <input
+              className="mock-browser-input"
+              value={this.state.path}
+              onChange={this.onChange}
+              onKeyPress={this.onKeyPress}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default withRouter(MockBrowser);

@@ -3,7 +3,7 @@ import {
   SET_SHOW_TIME,
   SET_TIME_STEP,
 } from '../constant/ActionTypes';
-
+import { ITimeReducer } from './IStore';
 const init = {
   showTime: false,
   timeData: {
@@ -11,7 +11,7 @@ const init = {
   },
 };
 
-const setTimeStep = (state, step) => {
+const setTimeStep = (state: ITimeReducer, step: number) => {
   const next = Object.assign({}, state);
   const { timeData } = next;
   const nextTimeData = Object.assign({}, timeData);
@@ -20,7 +20,7 @@ const setTimeStep = (state, step) => {
   return next;
 };
 
-const timeReducer = (state = init, action) => {
+const timeReducer = (state = init, action: { type: string; data: unknown }) => {
   const { type, data } = action;
   switch (type) {
     case SET_SHOW_TIME:
@@ -32,7 +32,7 @@ const timeReducer = (state = init, action) => {
         showTime: false,
       });
     case SET_TIME_STEP:
-      return setTimeStep(state, data);
+      return setTimeStep(state, data as number);
     default:
       return state;
   }

@@ -1,18 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2021-01-16 10:23:49
- * @LastEditTime: 2021-01-23 09:37:32
- * @LastEditors: your name
+ * @LastEditTime: 2021-02-23 12:20:42
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /react-webpack-ts/src/root/Root.tsx
  */
 import React, { Component } from 'react';
-import { NavLink, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import './Root.css';
 
-import ImageListIndex from '../pages/imgs/ImageListIndex';
-import BingImageDetail from '../pages/bing/BingImageDetail';
 import Temperature from '../pages/temperature/Temperature';
 import UploadTemperature from '../pages/temperature/UploadTemperature';
 import TimeView from '../test/TimeView';
@@ -22,8 +20,11 @@ import LeftNavigator from './LeftNavigator';
 import PagesConfig from './PagesConfig';
 import UriEncodePage from '../pages/uri/UriEncodePage';
 
-export default class Root extends Component {
-  constructor(props) {
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type Props = RouteComponentProps<{}>
+export default class Root extends Component<Props> {
+  constructor(props: Props) {
     super(props);
     const { match } = this.props;
     console.log('root path = ', match);
@@ -36,13 +37,9 @@ export default class Root extends Component {
 
     return (
       <div className='root-container'>
-        <LeftNavigator path={path} history={this.props.history} />
+        <LeftNavigator path={path} />
         <Switch>
           <Route path={`${path}/${PagesConfig[0].page}`} component={Main} />
-          <Route
-            path={`${path}/${PagesConfig[1].page}`}
-            component={ImageListIndex}
-          />
           <Route path={`${path}/${PagesConfig[2].page}`} component={TimeView} />
           <Route
             path={`${path}/${PagesConfig[3].page}`}
@@ -55,10 +52,6 @@ export default class Root extends Component {
           <Route
             path={`${path}/${PagesConfig[5].page}`}
             component={UriEncodePage}
-          />
-          <Route
-            path='/main/imgDetail/:type/:url'
-            component={BingImageDetail}
           />
         </Switch>
       </div>

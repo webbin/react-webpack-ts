@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-04-06 11:26:54
- * @LastEditTime: 2021-01-23 09:45:20
+ * @LastEditTime: 2021-02-23 12:20:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /react-webpack-ts/src/test/TimeView.js
@@ -9,10 +9,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import { Dispatch } from 'redux';
+
+import { IStore } from '../reducers/IStore';
 import { showTime, noTime, setTimeStep } from '../actions/timeActions';
 
-class TimeView extends React.PureComponent {
-  constructor(props) {
+type Props = {
+  dispatch: Dispatch;
+} & ReturnType<typeof mapState>;
+class TimeView extends React.PureComponent<Props> {
+  step: number;
+
+  constructor(props: Props) {
     super(props);
 
     this.step = 100;
@@ -67,8 +75,7 @@ class TimeView extends React.PureComponent {
   }
 }
 
-const getTimeReducer = (store) => store.timeReducer;
-const getTimeReducerData = (store) => store.timeReducer.timeData;
+const getTimeReducer = (store: IStore) => store.timeReducer;
 
 const getShowTime = createSelector([getTimeReducer], (timeReducer) => {
   return timeReducer.showTime;
@@ -79,7 +86,7 @@ const getTimeData = createSelector([getTimeReducer], (timeReducer) => {
   return timeReducer.timeData;
 });
 
-const mapState = (store) => {
+const mapState = (store: IStore) => {
   return {
     showTime: getShowTime(store),
     timeData: getTimeData(store),

@@ -1,15 +1,16 @@
 export default {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react",
-    "@babel/preset-typescript"
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',
+    '@babel/preset-typescript',
   ],
-  "plugins": [
+  plugins: [
     [
-      "@babel/plugin-transform-runtime",
+      '@babel/plugin-transform-runtime',
       {
-        "regenerator": true
-      }
-    ]
-  ]
-}
+        regenerator: true,
+      },
+    ],
+    ['@babel/plugin-proposal-class-properties'],
+  ],
+};
