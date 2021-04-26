@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-01-16 10:23:49
- * @LastEditTime: 2021-04-19 17:14:47
- * @LastEditors: weibin.zheng
+ * @LastEditTime: 2021-04-26 15:34:41
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /react-webpack-ts/src/root/Root.tsx
  */
@@ -20,9 +20,8 @@ import LeftNavigator from './LeftNavigator';
 import PagesConfig from './PagesConfig';
 import UriEncodePage from '../pages/uri/UriEncodePage';
 
-
 // eslint-disable-next-line @typescript-eslint/ban-types
-type Props = RouteComponentProps<{}>
+type Props = RouteComponentProps<{}>;
 export default class Root extends Component<Props> {
   constructor(props: Props) {
     super(props);
@@ -36,7 +35,7 @@ export default class Root extends Component<Props> {
     } = this.props;
 
     return (
-      <div className='root-container'>
+      <div className="root-container">
         <LeftNavigator path={path} />
         <Switch>
           <Route path={`${path}/${PagesConfig[0].page}`} component={Main} />

@@ -35,10 +35,14 @@ export default class UriEncodePage extends Component<Props, States> {
     const { result } = this.state;
     return (
       <div>
-        <textarea onChange={this.onTextChange}></textarea>
+        <textarea onChange={this.onTextChange} />
 
-        <button onClick={this.onEncode}>Encode</button>
-        <button onClick={this.onDecode}>Decode</button>
+        <button type="button" onClick={this.onEncode}>
+          Encode
+        </button>
+        <button type="button" onClick={this.onDecode}>
+          Decode
+        </button>
 
         <div>{result}</div>
       </div>

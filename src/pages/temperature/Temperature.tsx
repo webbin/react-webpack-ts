@@ -11,8 +11,7 @@ class Temperature extends Component<Props> {
     //
   }
 
-  getChartOption = () => {
-    return {
+  getChartOption = () => ({
       title: { text: '', show: false },
       tooltip: {},
       xAxis: {
@@ -26,8 +25,7 @@ class Temperature extends Component<Props> {
           data: [5, 20, 36, 10, 10, 20],
         },
       ],
-    };
-  };
+    });
 
   renderShowTemperature = () => {
     const { temperature } = this.props;

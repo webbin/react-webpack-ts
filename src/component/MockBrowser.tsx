@@ -43,10 +43,10 @@ class MockBrowser extends React.Component<Props, States> {
     return (
       <div className="mock-browser">
         <nav>
-          <button className="outline" onClick={goBack}>
+          <button type="button" className="outline" onClick={goBack}>
             ◀︎
-          </button>{' '}
-          <button className="outline" onClick={goForward}>
+          </button>
+          <button type="button" className="outline" onClick={goForward}>
             ▶
           </button>
         </nav>

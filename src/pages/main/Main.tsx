@@ -1,24 +1,37 @@
 /*
  * @Author: weibin.zheng
  * @Date: 2021-02-23 10:38:43
- * @LastEditTime: 2021-04-08 10:51:20
- * @LastEditors: weibin.zheng
+ * @LastEditTime: 2021-04-26 15:32:06
+ * @LastEditors: Please set LastEditors
  * @Description: content
  * @FilePath: /react-webpack-ts/src/pages/main/Main.tsx
  */
 import React from 'react';
-import { NavLink, Switch, Route, RouteComponentProps } from 'react-router-dom';
-// import WebSocketSever from 'ws';
+import { NavLink, Route, RouteComponentProps } from 'react-router-dom';
+import { Button, Switch } from 'antd-mobile';
+// import 'antd-mobile/dist/antd-mobile.css';
+// import 'antd-mobile/dist/antd-mobile.less';
 
 import './main.css';
 // import TimeView from '../../test/TimeView';
 // import FileList from '../../fileManage/FileList';
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Props = RouteComponentProps<{}>;
-class Main extends React.PureComponent<Props> {
+
+type State = {
+  checked: boolean;
+};
+class Main extends React.PureComponent<Props, State> {
+  constructor(params: Props) {
+    super(params);
+
+    this.state = {
+      checked: false,
+    };
+  }
+
   componentDidMount(): void {
     console.log(' props in main page ', this.props);
-
   }
 
   goToBasic = (): void => {
@@ -38,6 +51,7 @@ class Main extends React.PureComponent<Props> {
           }}
         >
           <button
+            type="button"
             className="nav_button"
             onClick={() => {
               history.push('/basic');
@@ -45,40 +59,16 @@ class Main extends React.PureComponent<Props> {
           >
             Go To Basic
           </button>
+
+          <div>
+            <Switch
+              checked={this.state.checked}
+              onChange={(value) => {
+                this.setState({ checked: value });
+              }}
+            />
+          </div>
         </div>
-        {/* <div className="nav">
-					<NavLink
-						to="/main/location"
-						activeClassName="tab_active"
-					>
-						AppLocation
-					</NavLink>
-					<NavLink
-						to="/main/time"
-						activeClassName="tab_active"
-					>
-						AppTime
-					</NavLink>
-					<NavLink
-						activeClassName="tab_active"
-						to="/main/config"
-					>
-						AppConfig
-					</NavLink>
-				</div>
-				<Switch>
-					<Route path={`${match.path}/time`} component={TimeView}/>
-					<Route
-						path='/main/config'
-						render={() => {
-							return (
-								<div>
-									Main Config
-								</div>
-							);
-						}}
-					/>
-				</Switch> */}
       </div>
     );
   }

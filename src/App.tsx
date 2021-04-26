@@ -1,6 +1,7 @@
+/* eslint-disable react/prefer-stateless-function */
 /*
  * @Date: 2021-01-21 20:56:42
- * @LastEditTime: 2021-04-19 17:19:58
+ * @LastEditTime: 2021-04-26 15:36:32
  * @Author: zhengweibin
  */
 import React, { Component } from 'react';

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-04-06 11:26:54
- * @LastEditTime: 2021-02-23 12:20:34
+ * @LastEditTime: 2021-04-26 15:40:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /react-webpack-ts/src/test/TimeView.js
@@ -57,17 +57,24 @@ class TimeView extends React.PureComponent<Props> {
       >
         this is time view
         <p>{this.props.showTime.toString()}</p>
-        <p>now step = {this.props.timeData.step}</p>
-        <button style={{ margin: 5 }} onClick={this.onShowTime}>
+        <button type="button" style={{ margin: 5 }} onClick={this.onShowTime}>
           show time
         </button>
-        <button style={{ margin: 5 }} onClick={this.onNoTime}>
+        <button type="button" style={{ margin: 5 }} onClick={this.onNoTime}>
           no time
         </button>
-        <button style={{ margin: 5 }} onClick={this.onSetTimeStep}>
+        <button
+          type="button"
+          style={{ margin: 5 }}
+          onClick={this.onSetTimeStep}
+        >
           set time step
         </button>
-        <button style={{ margin: 5 }} onClick={this.onKeepTimeStep}>
+        <button
+          type="button"
+          style={{ margin: 5 }}
+          onClick={this.onKeepTimeStep}
+        >
           keep time step
         </button>
       </div>
@@ -77,20 +84,19 @@ class TimeView extends React.PureComponent<Props> {
 
 const getTimeReducer = (store: IStore) => store.timeReducer;
 
-const getShowTime = createSelector([getTimeReducer], (timeReducer) => {
-  return timeReducer.showTime;
-});
+const getShowTime = createSelector(
+  [getTimeReducer],
+  (timeReducer) => timeReducer.showTime,
+);
 
 const getTimeData = createSelector([getTimeReducer], (timeReducer) => {
   console.log('time data calculating...');
   return timeReducer.timeData;
 });
 
-const mapState = (store: IStore) => {
-  return {
-    showTime: getShowTime(store),
-    timeData: getTimeData(store),
-  };
-};
+const mapState = (store: IStore) => ({
+  showTime: getShowTime(store),
+  timeData: getTimeData(store),
+});
 
 export default connect(mapState)(TimeView);

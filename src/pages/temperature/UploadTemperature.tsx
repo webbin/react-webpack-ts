@@ -42,11 +42,12 @@ class UploadTemperature extends Component<Props> {
   render() {
     return (
       <div className="upload-temperature-container">
-        <textarea
-          className="upload-text-area"
-          onChange={this.onTextChange}
-        ></textarea>
-        <button id="temperature-upload" onClick={this.onPushTemperature}>
+        <textarea className="upload-text-area" onChange={this.onTextChange} />
+        <button
+          type="button"
+          id="temperature-upload"
+          onClick={this.onPushTemperature}
+        >
           Upload
         </button>
       </div>
@@ -54,8 +55,6 @@ class UploadTemperature extends Component<Props> {
   }
 }
 
-const mapState = () => {
-  return {};
-};
+const mapState = () => ({});
 
 export default connect(mapState)(UploadTemperature);

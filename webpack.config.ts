@@ -1,8 +1,8 @@
 /*
  * @Author: weibin.zheng
  * @Date: 2021-01-21 21:16:55
- * @LastEditTime: 2021-04-19 17:11:32
- * @LastEditors: weibin.zheng
+ * @LastEditTime: 2021-04-26 15:19:58
+ * @LastEditors: Please set LastEditors
  * @Description: content
  * @FilePath: /react-webpack-ts/webpack.config.ts
  */
@@ -38,8 +38,27 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        include: /node_modules\/antd-mobile/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.css$/,
+        // exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'less-loader',
+            options: {
+              strictMath: true,
+              noIeCompat: true,
+            },
+          },
+        ],
       },
     ],
   },
@@ -53,8 +72,8 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       title: 'Hi',
       template: './public/index.html',
-      filename: 'index.html'
-    })
+      filename: 'index.html',
+    }),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css'],
@@ -62,7 +81,7 @@ const config: Configuration = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,

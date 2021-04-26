@@ -1,10 +1,11 @@
 import { PUSH_TEMPERATURE } from '../constant/ActionTypes';
 import { ITemperature, ITemperatureData } from './IStore';
+
 const InitState: ITemperature = [];
 
 const pushTemperatureData = (
   state: ITemperature = [],
-  data: ITemperatureData
+  data: ITemperatureData,
 ) => {
   const result = Array.from(state);
   if (state.length >= 24) {
@@ -16,7 +17,7 @@ const pushTemperatureData = (
 
 const temperature = (
   state = InitState,
-  action: { type: string; data: ITemperatureData }
+  action: { type: string; data: ITemperatureData },
 ) => {
   const { type, data } = action;
   switch (type) {
