@@ -1,7 +1,7 @@
 /*
  * @Author: weibin.zheng
  * @Date: 2021-02-23 10:38:43
- * @LastEditTime: 2021-04-26 15:32:06
+ * @LastEditTime: 2021-04-27 12:29:20
  * @LastEditors: Please set LastEditors
  * @Description: content
  * @FilePath: /react-webpack-ts/src/pages/main/Main.tsx
@@ -15,12 +15,12 @@ import { Button, Switch } from 'antd-mobile';
 import './main.css';
 // import TimeView from '../../test/TimeView';
 // import FileList from '../../fileManage/FileList';
-// eslint-disable-next-line @typescript-eslint/ban-types
 type Props = RouteComponentProps<{}>;
 
 type State = {
   checked: boolean;
 };
+
 class Main extends React.PureComponent<Props, State> {
   constructor(params: Props) {
     super(params);

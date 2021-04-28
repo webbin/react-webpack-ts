@@ -15,5 +15,5 @@
     "types": ["node"]
   },
   "include": ["src"],
-  "exclude": [".babelrc.js"]
+  "exclude": [".babelrc.js", "webpack.config.ts"]
 }

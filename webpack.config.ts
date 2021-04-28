@@ -1,7 +1,7 @@
 /*
  * @Author: weibin.zheng
  * @Date: 2021-01-21 21:16:55
- * @LastEditTime: 2021-04-26 15:19:58
+ * @LastEditTime: 2021-04-27 14:41:17
  * @LastEditors: Please set LastEditors
  * @Description: content
  * @FilePath: /react-webpack-ts/webpack.config.ts
@@ -38,12 +38,9 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
-        include: /node_modules\/antd-mobile/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.css$/,
-        // exclude: /node_modules/,
+        include: (filePath: string) => {
+          return true;
+        },
         use: ['style-loader', 'css-loader'],
       },
       {
@@ -66,7 +63,7 @@ const config: Configuration = {
     new ForkTsCheckerWebpackPlugin({
       async: false,
       eslint: {
-        files: ['./src/**/*.js', './src/**/*.ts', './src/**/*.tsx'],
+        files: ['./src/**/*.ts', './src/**/*.tsx'],
       },
     }),
     new HtmlWebpackPlugin({
